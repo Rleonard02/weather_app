@@ -1,0 +1,19 @@
+/* src/app/weather/weather.component.css */
+
+.container {
+    max-width: 600px;
+  }
+  
+  img {
+    width: 100px;
+    height: 100px;
+  }
+  
+  .input-group {
+    margin-bottom: 20px;
+  }
+  
+  .text-center p {
+    font-size: 1.2em;
+  }
+  
