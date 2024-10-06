@@ -1,19 +1,41 @@
-/* src/app/weather/weather.component.css */
-
 .container {
-    max-width: 600px;
-  }
-  
-  img {
-    width: 100px;
-    height: 100px;
-  }
-  
-  .input-group {
-    margin-bottom: 20px;
-  }
-  
-  .text-center p {
-    font-size: 1.2em;
-  }
-  
+  max-width: 900px;
+  background-color: #f8f9fa;
+  padding: 20px;
+  border-radius: 8px;
+}
+
+h1 {
+  font-size: 3rem;
+  color: #007bff;
+}
+
+.input-group {
+  margin-bottom: 20px;
+}
+
+.weather-icon {
+  width: 80px;
+  height: 80px;
+  display: block;
+  margin: 0 auto 10px;
+}
+
+.card {
+  border-radius: 12px;
+  overflow: hidden;
+}
+
+.card-title {
+  font-size: 1.5rem;
+}
+
+.card-body h3 {
+  font-size: 2rem;
+  margin-top: 10px;
+}
+
+.card-footer p {
+  margin: 0;
+  font-size: 0.9rem;
+}

@@ -1,34 +1,53 @@
 <div class="container mt-5">
-    <h1 class="text-center mb-4">Weather App</h1>
-    <div class="row justify-content-center">
-      <div class="col-md-6">
-        <div class="input-group mb-3">
-          <input
-            type="text"
-            class="form-control"
-            [(ngModel)]="city"
-            placeholder="Enter city name"
-            (keyup.enter)="getWeather()"
-          />
-          <button class="btn btn-primary" (click)="getWeather()">Get Weather</button>
+  <h1 class="text-center mb-4 display-4">Weather App</h1>
+  
+  <!-- Input section for city search -->
+  <div class="row justify-content-center">
+    <div class="col-md-8">
+      <div class="input-group mb-3">
+        <input
+          type="text"
+          class="form-control form-control-lg"
+          [(ngModel)]="city"
+          placeholder="Enter city name"
+          (keyup.enter)="getWeather()"
+        />
+        <button class="btn btn-primary btn-lg" (click)="getWeather()">Get Weather</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Loading indicator -->
+  <div *ngIf="isLoading" class="text-center my-4">
+    <div class="spinner-border text-primary" role="status">
+      <span class="visually-hidden">Loading...</span>
+    </div>
+  </div>
+
+  <!-- Display error message -->
+  <div *ngIf="errorMessage" class="alert alert-danger text-center mt-4">
+    <p>{{ errorMessage }}</p>
+  </div>
+
+  <!-- Weather Cards for selected cities -->
+  <div class="row">
+    <div class="col-md-4" *ngFor="let city of weatherData">
+      <div class="card shadow-sm mb-4 bg-light">
+        <div class="card-header d-flex justify-content-between align-items-center">
+          <h4 class="card-title">{{ city.city }}</h4>
+          <button class="btn btn-danger btn-sm" (click)="removeCity(city.city)">X</button>
+        </div>
+        <div class="card-body">
+          <img [src]="city.icon" class="weather-icon" alt="{{ city.condition }}" />
+          <h3 class="text-center">{{ city.temp }}</h3>
+          <p class="text-center">{{ city.condition }}</p>
+        </div>
+        <div class="card-footer">
+          <p>Feels like: {{ city.details.feelsLike }}</p>
+          <p>Wind Speed: {{ city.details.windSpeed }} km/h</p>
+          <p>Humidity: {{ city.details.humidity }}%</p>
         </div>
       </div>
     </div>
-  
-    <div *ngIf="isLoading" class="text-center">
-      <p>Loading...</p>
-    </div>
-  
-    <div *ngIf="weatherData" class="text-center">
-      <h2>{{ weatherData.location }}</h2>
-      <p>Temperature: {{ weatherData.temperature_c }} °C</p>
-      <p>Condition: {{ weatherData.condition }}</p>
-      <img [src]="getIconUrl(weatherData.icon)" alt="{{ weatherData.condition }}" />
-      <p>Last Updated: {{ weatherData.last_updated }}</p>
-    </div>
-  
-    <div *ngIf="errorMessage" class="text-center text-danger">
-      <p>{{ errorMessage }}</p>
-    </div>
   </div>
-  
+</div>
